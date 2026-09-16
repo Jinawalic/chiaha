@@ -17,16 +17,16 @@
 
     <style>
         :root {
-            --brand-color: #00809a;
-            --blue-dark: #005668;
-            --blue-mid: #00809a;
-            --blue-light: #4bbbd4;
+            --brand-color: #011947;
+            --blue-dark: #000e2b;
+            --blue-mid: #0e388f;
+            --blue-light: #60a5fa;
             --white: #ffffff;
-            --text-dark: #0c2633;
-            --text-muted: #556575;
+            --text-dark: #0f172a;
+            --text-muted: #475569;
             --card-bg: #ffffff;
-            --card-hover: #f5fcfd;
-            --shadow: 0 8px 30px rgba(0, 40, 52, 0.3);
+            --card-hover: #f8fafc;
+            --shadow: 0 8px 30px rgba(0, 8, 28, 0.4);
             --radius: 18px;
         }
 
@@ -40,7 +40,7 @@
         body {
             min-height: 100vh;
             font-family: 'Jost', sans-serif;
-            background-color: #00809a;
+            background-color: #011947;
             color: var(--white);
             overflow-x: hidden;
             display: flex;
@@ -138,7 +138,7 @@
             width: 76px;
             height: 76px;
             margin: 0 auto 18px;
-            background: rgba(0, 128, 154, 0.12);
+            background: rgba(1, 25, 71, 0.08);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -150,13 +150,15 @@
 
         @keyframes pulse-ring {
             0% {
-                box-shadow: 0 0 0 0 rgba(0, 128, 154, 0.35);
+                box-shadow: 0 0 0 0 rgba(1, 25, 71, 0.4);
             }
+
             70% {
-                box-shadow: 0 0 0 16px rgba(0, 128, 154, 0);
+                box-shadow: 0 0 0 16px rgba(1, 25, 71, 0);
             }
+
             100% {
-                box-shadow: 0 0 0 0 rgba(0, 128, 154, 0);
+                box-shadow: 0 0 0 0 rgba(1, 25, 71, 0);
             }
         }
 
@@ -185,20 +187,20 @@
             gap: 12px;
             width: 100%;
             padding: 16px 20px;
-            background: linear-gradient(135deg, #00809a 0%, #006b81 100%);
+            background: linear-gradient(135deg, #011947 0%, #0a2e73 100%);
             color: var(--white);
             border-radius: 12px;
             text-decoration: none;
             font-size: 1.15rem;
             font-weight: 700;
-            box-shadow: 0 6px 20px rgba(0, 128, 154, 0.35);
+            box-shadow: 0 6px 20px rgba(1, 25, 71, 0.4);
             transition: all 0.25s ease;
             margin-bottom: 12px;
         }
 
         .call-action-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 26px rgba(0, 128, 154, 0.45);
+            box-shadow: 0 10px 26px rgba(1, 25, 71, 0.55);
         }
 
         .call-action-btn i {
@@ -216,10 +218,10 @@
             align-items: center;
             gap: 6px;
             padding: 6px 14px;
-            background: #e6f7f9;
+            background: #eff6ff;
             border-radius: 20px;
             font-size: 12.5px;
-            color: #00738b;
+            color: #0e388f;
             font-weight: 600;
             margin-top: 6px;
         }
@@ -308,12 +310,13 @@
             </div>
             <h2>Call Our Office</h2>
             <p class="card-desc">
-                Your phone's dialpad is opening automatically. If it didn't open, tap the button below to call immediately.
+                Your phone's dialpad is opening automatically. If it didn't open, tap the button below to call
+                immediately.
             </p>
 
-            <a href="tel:08089230260" class="call-action-btn" id="callButton">
+            <a href="tel:07065911133" class="call-action-btn" id="callButton">
                 <i class="fas fa-phone-alt"></i>
-                <span class="number-display">08089230260</span>
+                <span class="number-display">07065911133</span>
             </a>
 
             <div class="status-pill">
@@ -324,8 +327,8 @@
 
         <!-- Secondary Actions -->
         <div class="secondary-actions">
-            <a href="https://wa.me/2348089230260" class="alt-btn whatsapp">
-                <i class="fab fa-whatsapp"></i> Chat on WhatsApp (08089230260)
+            <a href="https://wa.me/+2347065911133" class="alt-btn whatsapp">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp (07065911133)
             </a>
             <a href="about-us.html" class="alt-btn about">
                 <i class="fas fa-circle-info"></i> Learn More About Us
@@ -341,10 +344,10 @@
     </div>
 
     <script>
-        // Automatically open the dialpad with 08089230260
-        (function() {
-            setTimeout(function() {
-                window.location.href = "tel:08089230260";
+        // Automatically open the dialpad with 07065911133
+        (function () {
+            setTimeout(function () {
+                window.location.href = "tel:07065911133";
             }, 300);
         })();
     </script>
