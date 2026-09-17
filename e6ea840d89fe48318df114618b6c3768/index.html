@@ -62,7 +62,7 @@
     .slider-wrap {
       width: 100%;
       position: relative;
-      height: 340px;
+      height: 318px;
       overflow: hidden;
       box-shadow: 0 8px 40px rgba(0, 8, 28, 0.55);
       background: #000e2b;
@@ -82,7 +82,7 @@
     .slide img {
       width: 100%;
       height: 100%;
-      object-fit: fill;
+      object-fit: contain;
     }
 
     /* DOTS */
@@ -210,18 +210,17 @@
     <!-- SLIDER -->
     <div class="slider-wrap">
       <div class="slides" id="slides">
-        <div class="slide"><img src="./images/img1.PNG" style="height: 135%;"></div>
-        <div class="slide"><img src="./images/img2.PNG" style="height: 132%;"></div>
-        <div class="slide"><img src="./images/img3.PNG" style="height: 115%;"></div>
-        <div class="slide"><img src="./images/img4.PNG" style="height: 135%;"></div>
-        <div class="slide"><img src="./images/img5.PNG" style="height: 128%;"></div>
-        <div class="slide"><img src="./images/img6.PNG" style="height: 110%;"></div>
-        <div class="slide"><img src="./images/img7.PNG" style="height: 132%;"></div>
-        <div class="slide"><img src="./images/img8.PNG" style="height: 132%;"></div>
-        <div class="slide"><img src="./images/img8b.PNG" style="height: 130%;"></div>
-        <div class="slide"><img src="./images/img9.PNG" style="height: 135%;"></div>
-        <div class="slide"><img src="./images/img10.PNG" style="height: 130%;"></div>
-        <div class="slide"><img src="./images/img11.PNG" style="height: 90%;"></div>
+        <div class="slide"><img src="./images/img1.PNG" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img2.PNG" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img3.PNG" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img4.PNG" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img5.PNG" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img6.PNG" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img7.PNG" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img8.PNG" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img9.PNG" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img10.PNG" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img11.PNG" style="height: 100%;"></div>
       </div>
 
       <div class="slider-dots">
@@ -236,7 +235,6 @@
         <button class="dot" data-i="8"></button>
         <button class="dot" data-i="9"></button>
         <button class="dot" data-i="10"></button>
-        <button class="dot" data-i="11"></button>
       </div>
     </div>
 
@@ -271,7 +269,7 @@
     const track = document.getElementById('slides');
     const dots = document.querySelectorAll('.dot');
     let cur = 0;
-    const TOTAL = 12; // Update this if you add/remove slides
+    const TOTAL = 11; // Update this if you add/remove slides
 
     function goTo(n) {
       cur = (n + TOTAL) % TOTAL;
