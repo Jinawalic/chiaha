@@ -4,9 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/jpeg" sizes="32x32" href="./images/logo.PNG">
-  <link rel="icon" type="image/jpeg" sizes="16x16" href="./images/logo.PNG">
-  <link rel="apple-touch-icon" href="./images/logo.PNG">
+  <link rel="icon" type="image/webp" sizes="32x32" href="./images/logo.webp">
+  <link rel="icon" type="image/webp" sizes="16x16" href="./images/logo.webp">
+  <link rel="apple-touch-icon" href="./images/logo.webp">
+  <link rel="preload" as="image" href="./images/img1.webp" type="image/webp">
   <title>Chiaha Holdings Ltd</title>
 
   <link
@@ -111,6 +112,42 @@
       transform: scale(1.3);
     }
 
+    /* SLIDER NAVIGATION BUTTONS */
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(0, 14, 43, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      backdrop-filter: blur(4px);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.25s ease;
+      font-size: 0.85rem;
+    }
+
+    .slider-btn:hover,
+    .slider-btn:active {
+      background: rgba(0, 14, 43, 0.85);
+      border-color: rgba(255, 255, 255, 0.6);
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .prev-btn {
+      left: 10px;
+    }
+
+    .next-btn {
+      right: 10px;
+    }
+
     /* PROFILE */
     .profile {
       display: flex;
@@ -210,17 +247,17 @@
     <!-- SLIDER -->
     <div class="slider-wrap">
       <div class="slides" id="slides">
-        <div class="slide"><img src="./images/img1.PNG" style="height: 100%;"></div>
-        <div class="slide"><img src="./images/img2.PNG" style="height: 100%;"></div>
-        <div class="slide"><img src="./images/img3.PNG" style="height: 100%;"></div>
-        <div class="slide"><img src="./images/img4.PNG" style="height: 100%;"></div>
-        <div class="slide"><img src="./images/img5.PNG" style="height: 100%;"></div>
-        <div class="slide"><img src="./images/img6.PNG" style="height: 100%;"></div>
-        <div class="slide"><img src="./images/img7.PNG" style="height: 100%;"></div>
-        <div class="slide"><img src="./images/img8.PNG" style="height: 100%;"></div>
-        <div class="slide"><img src="./images/img9.PNG" style="height: 100%;"></div>
-        <div class="slide"><img src="./images/img10.PNG" style="height: 100%;"></div>
-        <div class="slide"><img src="./images/img11.PNG" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img1.webp" alt="Chiaha Holdings slide 1" width="1200" height="960" fetchpriority="high" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img2.webp" alt="Chiaha Holdings slide 2" width="1200" height="960" loading="lazy" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img3.webp" alt="Chiaha Holdings slide 3" width="1200" height="960" loading="lazy" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img4.webp" alt="Chiaha Holdings slide 4" width="1200" height="960" loading="lazy" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img5.webp" alt="Chiaha Holdings slide 5" width="1200" height="960" loading="lazy" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img6.webp" alt="Chiaha Holdings slide 6" width="1200" height="960" loading="lazy" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img7.webp" alt="Chiaha Holdings slide 7" width="1200" height="960" loading="lazy" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img8.webp" alt="Chiaha Holdings slide 8" width="1200" height="960" loading="lazy" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img9.webp" alt="Chiaha Holdings slide 9" width="1200" height="960" loading="lazy" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img10.webp" alt="Chiaha Holdings slide 10" width="1200" height="960" loading="lazy" style="height: 100%;"></div>
+        <div class="slide"><img src="./images/img11.webp" alt="Chiaha Holdings slide 11" width="1200" height="960" loading="lazy" style="height: 100%;"></div>
       </div>
 
       <div class="slider-dots">
@@ -236,6 +273,14 @@
         <button class="dot" data-i="9"></button>
         <button class="dot" data-i="10"></button>
       </div>
+
+      <!-- SLIDER ARROWS -->
+      <button class="slider-btn prev-btn" id="prevSlide" aria-label="Previous slide">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="slider-btn next-btn" id="nextSlide" aria-label="Next slide">
+        <i class="fas fa-chevron-right"></i>
+      </button>
     </div>
 
     <!-- PROFILE -->
@@ -268,8 +313,11 @@
   <script>
     const track = document.getElementById('slides');
     const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
     let cur = 0;
     const TOTAL = 11; // Update this if you add/remove slides
+    let timer;
 
     function goTo(n) {
       cur = (n + TOTAL) % TOTAL;
@@ -277,9 +325,50 @@
       dots.forEach((d, i) => d.classList.toggle('active', i === cur));
     }
 
-    dots.forEach(d => d.onclick = () => goTo(+d.dataset.i));
+    function resetTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => goTo(cur + 1), 3500);
+    }
 
-    setInterval(() => goTo(cur + 1), 3000);
+    dots.forEach(d => d.onclick = () => {
+      goTo(+d.dataset.i);
+      resetTimer();
+    });
+
+    if (prevBtn) {
+      prevBtn.onclick = () => {
+        goTo(cur - 1);
+        resetTimer();
+      };
+    }
+
+    if (nextBtn) {
+      nextBtn.onclick = () => {
+        goTo(cur + 1);
+        resetTimer();
+      };
+    }
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const sliderWrap = document.querySelector('.slider-wrap');
+    if (sliderWrap) {
+      sliderWrap.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      sliderWrap.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchStartX - touchEndX;
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) goTo(cur + 1);
+          else goTo(cur - 1);
+          resetTimer();
+        }
+      }, { passive: true });
+    }
+
+    resetTimer();
   </script>
 </body>
 
